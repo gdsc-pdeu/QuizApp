@@ -1,8 +1,7 @@
 # Quiz_app
 Basic Quiz app has fixed questions and winner count. Great project for beginner.
 
-# Improvements
-
+## Improvements that could be made
 * Add Darkmode support
 * UI improvemtnts 
 * Multiple correct support
