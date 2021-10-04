@@ -4,7 +4,8 @@
     >
 
 
-   <solid android:color="@android:color/holo_green_light"/>
-    <corners android:radius="10dp"/>
-
+    <stroke android:width="3dp"
+        android:color="@android:color/holo_green_light"/>
+    <solid android:color="@android:color/transparent"/>
+    <corners android:radius="18dp"/>
 </shape>
