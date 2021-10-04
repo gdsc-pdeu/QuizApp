@@ -19,7 +19,7 @@ class Quiz_questions : AppCompatActivity() , View.OnClickListener {
     private var mSelectedop : Int =0
     private var mCorrect : Int =0
     private var mUsername : String? = null
-
+    private var isOptionSelected: Boolean = false
     private lateinit var binding: ActivityQuizQuestionsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,6 +44,8 @@ class Quiz_questions : AppCompatActivity() , View.OnClickListener {
         binding.Submit.setOnClickListener(this)
     }
     private fun setQuestion(){
+
+        isOptionSelected = false //set false as new question loaded
 
         val question = mQuestionsList!![mCurrentPos-1]
         defaultOp()
@@ -80,51 +82,57 @@ class Quiz_questions : AppCompatActivity() , View.OnClickListener {
         when(v?.id){
             R.id.Op1->{
                 selectedOptionsView(binding.Op1,1)
+                isOptionSelected=true
             }
             R.id.Op2->{
                 selectedOptionsView(binding.Op2,2)
+                isOptionSelected=true
             }
             R.id.Op3->{
                 selectedOptionsView(binding.Op3,3)
+                isOptionSelected=true
             }
             R.id.Op4->{
                 selectedOptionsView(binding.Op4,4)
+                isOptionSelected=true
             }
             R.id.Submit ->{
-                if(mSelectedop == 0){
-                    mCurrentPos ++
+                if(isOptionSelected) {
+                    if (mSelectedop == 0) {
+                        mCurrentPos++
 
-                    when{
-                        mCurrentPos<= mQuestionsList!!.size ->{
-                            setQuestion()
+                        when {
+                            mCurrentPos <= mQuestionsList!!.size -> {
+                                setQuestion()
+                            }
+                            else -> {
+                                val intent = Intent(this, Result::class.java)
+                                intent.putExtra(Constants.username, mUsername)
+                                intent.putExtra(Constants.Total_Questions, mQuestionsList!!.size)
+                                intent.putExtra(Constants.correct_Questions, mCorrect)
+                                startActivity(intent)
+                                finish()
+                            }
                         }
-                        else->{
-                            val intent = Intent(this,Result::class.java)
-                            intent.putExtra(Constants.username, mUsername)
-                            intent.putExtra(Constants.Total_Questions,mQuestionsList!!.size)
-                            intent.putExtra(Constants.correct_Questions,mCorrect)
-                            startActivity(intent)
-                            finish()
+                    } else {
+                        val question = mQuestionsList?.get(mCurrentPos - 1)
+                        if (question!!.correct != mSelectedop) {
+                            answerView(mSelectedop, R.drawable.option_wrong)
+                        } else {
+                            mCorrect++
                         }
-                    }
-                }
-                else{
-                    val question = mQuestionsList?.get(mCurrentPos -1 )
-                    if (question!!.correct != mSelectedop){
-                        answerView(mSelectedop,R.drawable.option_wrong)
-                    }else{
-                        mCorrect++
-                    }
-                    answerView(question.correct,R.drawable.option_correct)
+                        answerView(question.correct, R.drawable.option_correct)
 
-                    if(mCurrentPos == mQuestionsList!!.size){
-                        binding.Submit.text = "Finish"
-                    }else{
-                        binding.Submit.text="Go To The Next Question"
+                        if (mCurrentPos == mQuestionsList!!.size) {
+                            binding.Submit.text = "Finish"
+                        } else {
+                            binding.Submit.text = "Go To The Next Question"
+                        }
+                        mSelectedop = 0
                     }
-                    mSelectedop =0
+                }else{
+                    Toast.makeText(this,"Please select option",Toast.LENGTH_SHORT).show()
                 }
-
             }
         }
 
