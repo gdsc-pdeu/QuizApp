@@ -3,18 +3,22 @@ package com.example.quizapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_result.*
+import com.example.quizapp.databinding.ActivityResultBinding
 
 class Result : AppCompatActivity() {
+
+    private lateinit var binding: ActivityResultBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_result)
+        binding = ActivityResultBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         supportActionBar?.hide()
-        Username_result.text = intent.getStringExtra(Constants.username)
+        binding.UsernameResult.text = intent.getStringExtra(Constants.username)
         val correct = intent.getIntExtra(Constants.correct_Questions,0)
         val total = intent.getIntExtra(Constants.Total_Questions,0)
-        Score_result.text = "You have scored ${correct} out of ${total} "
-        Finish_btn.setOnClickListener{
+        binding.ScoreResult.text = "You have scored ${correct} out of ${total} "
+        binding.FinishBtn.setOnClickListener{
             val intent= Intent(this,MainActivity::class.java)
             startActivity(intent)
             finish()

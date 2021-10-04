@@ -10,7 +10,7 @@ import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import kotlinx.android.synthetic.main.activity_quiz_questions.*
+import com.example.quizapp.databinding.ActivityQuizQuestionsBinding
 
 class Quiz_questions : AppCompatActivity() , View.OnClickListener {
 
@@ -19,10 +19,14 @@ class Quiz_questions : AppCompatActivity() , View.OnClickListener {
     private var mSelectedop : Int =0
     private var mCorrect : Int =0
     private var mUsername : String? = null
+
+    private lateinit var binding: ActivityQuizQuestionsBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_quiz_questions)
+        binding = ActivityQuizQuestionsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         supportActionBar?.hide()
 
         mUsername= intent.getStringExtra(Constants.username)
@@ -32,38 +36,38 @@ class Quiz_questions : AppCompatActivity() , View.OnClickListener {
 
         setQuestion()
 
-        Op1.setOnClickListener(this)
-        Op2.setOnClickListener(this)
-        Op3.setOnClickListener(this)
-        Op4.setOnClickListener(this)
+        binding.Op1.setOnClickListener(this)
+        binding.Op2.setOnClickListener(this)
+        binding.Op3.setOnClickListener(this)
+        binding.Op4.setOnClickListener(this)
 
-        Submit.setOnClickListener(this)
+        binding.Submit.setOnClickListener(this)
     }
     private fun setQuestion(){
 
         val question = mQuestionsList!![mCurrentPos-1]
         defaultOp()
         if(mCurrentPos == mQuestionsList!!.size){
-            Submit.text ="Finish"
+            binding.Submit.text ="Finish"
         }else{
-            Submit.text="Submit"
+            binding.Submit.text="Submit"
         }
-        progress_horizontal.progress =mCurrentPos
-        textView_progress.text="$mCurrentPos "+ "/" +progress_horizontal.max
-        Question_text.text = question!!.question
-        Flag.setImageResource(question.Image)
-        Op1.text= question.op1
-        Op2.text = question.op2
-        Op3.text = question.op3
-        Op4.text = question.op4
+        binding.progressHorizontal.progress =mCurrentPos
+        binding.textViewProgress.text="$mCurrentPos "+ "/" +binding.progressHorizontal.max
+        binding.QuestionText.text = question!!.question
+        binding.Flag.setImageResource(question.Image)
+        binding.Op1.text= question.op1
+        binding.Op2.text = question.op2
+        binding.Op3.text = question.op3
+        binding.Op4.text = question.op4
     }
 
     private fun defaultOp(){
         val options = ArrayList<TextView>()
-        options.add(0,Op1)
-        options.add(1,Op2)
-        options.add(2,Op3)
-        options.add(3,Op4)
+        options.add(0,binding.Op1)
+        options.add(1,binding.Op2)
+        options.add(2,binding.Op3)
+        options.add(3,binding.Op4)
 
         for (option in options){
             option.setTextColor(Color.parseColor("#7A8089"))
@@ -75,16 +79,16 @@ class Quiz_questions : AppCompatActivity() , View.OnClickListener {
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.Op1->{
-                selectedOptionsView(Op1,1)
+                selectedOptionsView(binding.Op1,1)
             }
             R.id.Op2->{
-                selectedOptionsView(Op2,2)
+                selectedOptionsView(binding.Op2,2)
             }
             R.id.Op3->{
-                selectedOptionsView(Op3,3)
+                selectedOptionsView(binding.Op3,3)
             }
             R.id.Op4->{
-                selectedOptionsView(Op4,4)
+                selectedOptionsView(binding.Op4,4)
             }
             R.id.Submit ->{
                 if(mSelectedop == 0){
@@ -114,9 +118,9 @@ class Quiz_questions : AppCompatActivity() , View.OnClickListener {
                     answerView(question.correct,R.drawable.option_correct)
 
                     if(mCurrentPos == mQuestionsList!!.size){
-                        Submit.text = "Finish"
+                        binding.Submit.text = "Finish"
                     }else{
-                        Submit.text="Go To The Next Question"
+                        binding.Submit.text="Go To The Next Question"
                     }
                     mSelectedop =0
                 }
@@ -129,16 +133,16 @@ class Quiz_questions : AppCompatActivity() , View.OnClickListener {
     private fun answerView(answer: Int, drawableview: Int) {
         when(answer){
             1->{
-                Op1.background= ContextCompat.getDrawable(this,drawableview)
+                binding.Op1.background= ContextCompat.getDrawable(this,drawableview)
             }
             2->{
-                Op2.background= ContextCompat.getDrawable(this,drawableview)
+                binding.Op2.background= ContextCompat.getDrawable(this,drawableview)
             }
             3->{
-                Op3.background= ContextCompat.getDrawable(this,drawableview)
+                binding.Op3.background= ContextCompat.getDrawable(this,drawableview)
             }
             4->{
-                Op4.background= ContextCompat.getDrawable(this,drawableview)
+                binding.Op4.background= ContextCompat.getDrawable(this,drawableview)
             }
         }
 
