@@ -163,7 +163,7 @@ class Quiz_questions : AppCompatActivity() , View.OnClickListener {
         defaultOp()
         mSelectedop = selectedOpNum
 
-        tv.setTextColor(Color.parseColor("#363A43"))
+        tv.setTextColor(Color.parseColor("#808080"))//#363A43
         tv.setTypeface(tv.typeface,Typeface.BOLD)
         tv.background = ContextCompat.getDrawable(this,R.drawable.option_design_selected)
 
