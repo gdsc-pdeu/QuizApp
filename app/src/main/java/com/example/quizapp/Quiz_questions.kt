@@ -45,6 +45,7 @@ class Quiz_questions : AppCompatActivity() , View.OnClickListener {
     }
     private fun setQuestion(){
 
+        optionsClickableOrNot(true) //set options clickable as new question loaded
         isOptionSelected = false //set false as new question loaded
 
         val question = mQuestionsList!![mCurrentPos-1]
@@ -123,6 +124,8 @@ class Quiz_questions : AppCompatActivity() , View.OnClickListener {
                         }
                         answerView(question.correct, R.drawable.option_correct)
 
+                        optionsClickableOrNot(false)  //set options not-clickable as user has already chosen
+
                         if (mCurrentPos == mQuestionsList!!.size) {
                             binding.Submit.text = "Finish"
                         } else {
@@ -164,5 +167,13 @@ class Quiz_questions : AppCompatActivity() , View.OnClickListener {
         tv.setTypeface(tv.typeface,Typeface.BOLD)
         tv.background = ContextCompat.getDrawable(this,R.drawable.option_design_selected)
 
+    }
+
+
+    private fun optionsClickableOrNot(boolean: Boolean){
+        binding.Op1.isEnabled=boolean
+        binding.Op2.isEnabled=boolean
+        binding.Op3.isEnabled=boolean
+        binding.Op4.isEnabled=boolean
     }
 }
