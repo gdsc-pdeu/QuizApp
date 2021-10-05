@@ -47,8 +47,8 @@
 
                 <TextView
                     android:id="@+id/Question_text"
-                    android:layout_width="383dp"
-                    android:layout_height="66dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="What Country does this flag belong to?"
                     android:textColor="@color/textColor"
@@ -62,8 +62,8 @@
 
                 <ImageView
                     android:id="@+id/Flag"
-                    android:layout_width="182dp"
-                    android:layout_height="102dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.497"
@@ -84,8 +84,8 @@
 
                 <TextView
                     android:id="@+id/Op1"
-                    android:layout_width="341dp"
-                    android:layout_height="70dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="40dp"
                     android:layout_marginEnd="16dp"
@@ -155,8 +155,8 @@
 
                 <Button
                     android:id="@+id/Submit"
-                    android:layout_width="309dp"
-                    android:layout_height="78dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="40dp"
                     android:layout_marginEnd="16dp"
