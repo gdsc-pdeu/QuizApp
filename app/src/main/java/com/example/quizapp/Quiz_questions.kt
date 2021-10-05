@@ -30,6 +30,11 @@ class Quiz_questions : AppCompatActivity() , View.OnClickListener {
         supportActionBar?.hide()
 
         mUsername= intent.getStringExtra(Constants.username)
+        binding.settings.setOnClickListener {
+            val intent = Intent(this, Settings::class.java)
+            // start your next activity
+            startActivity(intent)
+        }
 
         mQuestionsList= Constants.getQuestion()
         Log.i("Questions size:","${mQuestionsList!!.size}")
@@ -129,7 +134,7 @@ class Quiz_questions : AppCompatActivity() , View.OnClickListener {
                         if (mCurrentPos == mQuestionsList!!.size) {
                             binding.Submit.text = "Finish"
                         } else {
-                            binding.Submit.text = "Go To The Next Question"
+                            binding.Submit.text = "Next Question"
                         }
                         mSelectedop = 0
                     }
