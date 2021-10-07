@@ -15,6 +15,7 @@
         <activity android:name=".Result" />
         <activity
             android:name=".Quiz_questions"
+            android:configChanges="uiMode"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".MainActivity"
