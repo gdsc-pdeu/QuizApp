@@ -25,12 +25,12 @@ class Settings : AppCompatActivity() {
 //            finish()
         }
         changeName .setOnClickListener{
+
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
         back.setOnClickListener{
-            val intent = Intent(this, Quiz_questions::class.java)
-            startActivity(intent)
+           onBackPressed()
         }
     }
 }
