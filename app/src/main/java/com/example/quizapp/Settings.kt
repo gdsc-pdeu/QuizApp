@@ -41,7 +41,6 @@ class Settings : AppCompatActivity() {
                 sharedPrefsEdit.putBoolean("NightMode", true)
                 sharedPrefsEdit.apply()
 
-
                 darkMode.text = "Disable Dark Mode"
             }
         }
