@@ -32,6 +32,7 @@ class Quiz_questions : AppCompatActivity() , View.OnClickListener {
         mUsername= intent.getStringExtra(Constants.username)
         binding.settings.setOnClickListener {
             val intent = Intent(this, Settings::class.java)
+            intent.putExtra("username",mUsername.toString())
             // start your next activity
             startActivity(intent)
         }
