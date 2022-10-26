@@ -20,9 +20,11 @@ Bug fixes & darkmode: <a href="https://github.com/mukulasija">***Mukul Asija***<
 
 ## Current images of the app
 
-<table>
-  <tr>
-    <td><img src="" width="350">
-    <td><img src="" width="350">
-    <td><img src="" width="350">
-</table>
+## 
+
+||||
+|:----------------------------------------:|:-----------------------------------------:|:-----------------------------------------: |
+| ![WhatsApp Image 2022-10-26 at 8 18 08 PM](https://user-images.githubusercontent.com/78532621/198062252-d55106b7-dcc6-4b92-ac55-c5097cc5ffd4.jpeg)|![WhatsApp Image 2022-10-26 at 8 18 06 PM](https://user-images.githubusercontent.com/78532621/198060124-a1f6fde8-95d9-473c-8a6f-1b52d473f876.jpeg)  
+|![WhatsApp Image 2022-10-26 at 8 18 11 PM](https://user-images.githubusercontent.com/78532621/198060176-ef6c7c8f-816e-46ed-b26a-0f18ec56b456.jpeg) |![WhatsApp Image 2022-10-26 at 8 18 09 PM](https://user-images.githubusercontent.com/78532621/198060218-8d12aaf4-ffb0-4f23-8caa-6a6c6f72ea8b.jpeg)
+
+
